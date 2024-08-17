@@ -57,6 +57,12 @@ Usage:
     Execute the compiled binary: ./XCmd
     A tray icon will appear. Use the configured hotkeys to trigger actions.
 
+Configuration file format:
+    ( Keyboard key,path/to/executable,command line parameter1,clp2,  )
+    ( Keyboard key,,,,command  [sends command to port 21002]         )
+    Example:
+    F7,/usr/bin/xed,settings.csv,--new-window,
+
 Dependencies and Build Requirements:
 
     GTK+ (for system tray integration)
