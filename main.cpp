@@ -246,8 +246,8 @@ int main(int argc, char* argv[])
     readConfig(path);
 
     Gtk::Main kit(argc, argv);  // Initialize GTK
-    std::string icon_path = "/home/dimeglio@dm.ici/Documents/dev/code blocks projects/XS/red-icon.png";
-    std::string icon_path_g_running = "/home/dimeglio@dm.ici/Documents/dev/code blocks projects/XS/green-icon.png";
+    std::string icon_path = "red-icon.png";
+    std::string icon_path_g_running = "green-icon.png";
     MyTrayIcon tray_icon(icon_path, icon_path_g_running);
 
     std::thread gtk_thread(run_gtk_main);
