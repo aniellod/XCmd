@@ -81,8 +81,4 @@ Notes:
     + Support for multiple socket connections or destinations
     + Improved error handling and diagnostics
     + Integration with other GUI frameworks or notification systems
-
-By leveraging XCmd, you can create a tailored, efficient hotkey experience that seamlessly bridges your keyboard, executables, and networked applications.
-
-
     
