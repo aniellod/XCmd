@@ -1,6 +1,7 @@
 #include "MyTrayIcon.h"
 #include <iostream>
 #include <glibmm/fileutils.h>
+#include <cstdlib>
 
 MyTrayIcon::MyTrayIcon(const std::string &icon_path, const std::string &icon_path_running)
     : icon_path_(icon_path), icon_path_running_(icon_path_running)
@@ -32,6 +33,10 @@ MyTrayIcon::MyTrayIcon(const std::string &icon_path, const std::string &icon_pat
     menu_next_ = Gtk::manage(new Gtk::MenuItem("Next"));
     menu_next_->signal_activate().connect(sigc::mem_fun(*this, &MyTrayIcon::signal_next_emit));
     menu_->append(*menu_next_);
+
+    menu_view_settings_ = Gtk::manage(new Gtk::MenuItem("View Settings"));
+    menu_view_settings_->signal_activate().connect(sigc::mem_fun(*this, &MyTrayIcon::on_view_settings));
+    menu_->append(*menu_view_settings_);
 
     menu_exit_ = Gtk::manage(new Gtk::MenuItem("Exit"));
     menu_exit_->signal_activate().connect(sigc::mem_fun(*this, &MyTrayIcon::on_exit));
@@ -86,5 +91,17 @@ void MyTrayIcon::on_exit()
 {
     std::cout << "Exit action triggered." << std::endl;
     Gtk::Main::quit();
+}
+
+void MyTrayIcon::on_view_settings()
+{
+    const char* home = std::getenv("HOME");
+    std::string path = home ? std::string(home) + "/.xcmd-settings.csv" : ".xcmd-settings.csv";
+    std::string command = std::string("xdg-open \"") + path + "\" &";
+    int result = std::system(command.c_str());
+    if (result == -1)
+        {
+            std::cerr << "Failed to open settings file" << std::endl;
+        }
 }
 
