@@ -14,6 +14,7 @@ public:
     void on_run();
     void on_next();
     void on_exit();
+    void on_view_settings();
     void set_menu(std::string menu_item);
 
     // Signal for the Next action
@@ -24,6 +25,7 @@ private:
     Gtk::Menu *menu_;
     Gtk::MenuItem *menu_run_;
     Gtk::MenuItem *menu_next_;
+    Gtk::MenuItem *menu_view_settings_;
     Gtk::MenuItem *menu_exit_;
     Gtk::StatusIcon *status_icon;
 
