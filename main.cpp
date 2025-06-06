@@ -228,7 +228,7 @@ void send_to_socket(const std::string& message)
 
 void on_next()
 {
-    std::cout << "Next action triggered from main" << std::endl;
+    std::cout << "Next action triggered from tray icon" << std::endl;
     send_to_socket("next");
 }
 
